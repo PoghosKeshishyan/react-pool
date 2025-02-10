@@ -31,7 +31,7 @@ export default function App() {
 
     return (
         <div className='App'>
-            <h1>POOL</h1>
+            <h1>POOL - {count}</h1>
             <Buttons addWater={addWater} removeWater={removeWater} />
             <Pool count={count} />
         </div>
