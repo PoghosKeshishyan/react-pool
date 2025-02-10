@@ -1,0 +1,23 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    overflow: hidden;
+}
+
+
+.Pool {
+    width: 400px;
+    height: 500px;
+    border: .1rem solid;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.Water {
+    height: 100px;
+    background: blue;
+}
+
