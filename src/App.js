@@ -1,30 +1,37 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Buttons } from './components/Buttons';
 import { Pool } from './components/Pool';
 
 export default function App() {
     const [count, setCount] = useState(0);
+    const isRunning = useRef(false);
 
-    const addWater = () => {
+    const fillPool = () => {
+        if (isRunning.current) return;
+        isRunning.current = true;
+
         const startTime = Date.now();
-
         const interval = setInterval(() => {
             setCount(prev => prev + 1);
 
             if (Date.now() - startTime > 5000) {
                 clearInterval(interval);
+                isRunning.current = false;
             }
         }, 1000);
     }
 
-    const removeWater = () => {
-        const startTime = Date.now();
+    const emptyPool = () => {
+        if (isRunning.current) return;
+        isRunning.current = true;
 
+        const startTime = Date.now();
         const interval = setInterval(() => {
             setCount(prev => prev - 1);
 
             if (Date.now() - startTime > 5000) {
                 clearInterval(interval);
+                isRunning.current = false;
             }
         }, 1000);
     }
@@ -32,8 +39,8 @@ export default function App() {
     return (
         <div className='App'>
             <h1>POOL - {count}</h1>
-            <Buttons addWater={addWater} removeWater={removeWater} />
+            <Buttons fillPool={fillPool} emptyPool={emptyPool} />
             <Pool count={count} />
         </div>
-    )
+    );
 }

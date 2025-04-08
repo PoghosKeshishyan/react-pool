@@ -1,9 +1,8 @@
-
-export function Buttons({addWater, removeWater}) {
+export function Buttons({ fillPool, emptyPool }) {
   return (
     <div className='Buttons'>
-        <button onClick={addWater}>to fill</button>
-        <button onClick={removeWater}>to empty</button>
+      <button onClick={fillPool}>to fill</button>
+      <button onClick={emptyPool}>to empty</button>
     </div>
-  )
+  );
 }
